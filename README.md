@@ -1,6 +1,7 @@
 # xliff-generator
 [![Build Status](https://travis-ci.org/markusblasek/node-xliff-generator.svg?branch=master)](https://travis-ci.org/markusblasek/node-xliff-generator)
 [![Coverage Status](https://coveralls.io/repos/github/markusblasek/node-xliff-generator/badge.svg)](https://coveralls.io/github/markusblasek/node-xliff-generator)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Reads from an source file the translation keys and 
 their corresponding translation values and 
