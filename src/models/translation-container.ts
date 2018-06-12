@@ -1,5 +1,4 @@
 import { InvalidArgumentError } from '../errors/invalid-argument.error';
-import { LanguageKeyUtil } from '../utils';
 
 export class TranslationContainer {
     private productName: string;
@@ -12,15 +11,13 @@ export class TranslationContainer {
             throw new InvalidArgumentError('The size of supported language key is zero');
         }
         for (let i = 0, len = supportedLanguageKeys.length; i < len; ++i) {
-            const normalizedKey = this.normalizeLanguageKey(supportedLanguageKeys[i]);
-            this.supportedLanguageKeys.add(normalizedKey);
+            this.supportedLanguageKeys.add(supportedLanguageKeys[i]);
         }
-        const normalizedSourceLanguageKey = this.normalizeLanguageKey(sourceLanguageKey);
-        if (!this.supportedLanguageKeys.has(normalizedSourceLanguageKey)) {
+        if (!this.supportedLanguageKeys.has(sourceLanguageKey)) {
             throw new InvalidArgumentError(
                 `The source language key '${sourceLanguageKey}' is not a supported language key`);
         }
-        this.sourceLanguageKey = normalizedSourceLanguageKey;
+        this.sourceLanguageKey = sourceLanguageKey;
         this.productName = productName;
     }
 
@@ -37,8 +34,7 @@ export class TranslationContainer {
     }
 
     public isLanguageKeySupported(languageKey: string): boolean {
-        const normalizedLanguageKey = this.normalizeLanguageKey(languageKey);
-        return this.supportedLanguageKeys.has(normalizedLanguageKey);
+        return this.supportedLanguageKeys.has(languageKey);
     }
 
     /**
@@ -48,8 +44,7 @@ export class TranslationContainer {
      * @param value {string}
      */
     public addTranslation(translationId: string, languageKey: string, value: string): void {
-        const normalizedLanguageKey = this.normalizeLanguageKey(languageKey);
-        if (!this.isLanguageKeySupported(normalizedLanguageKey)) {
+        if (!this.isLanguageKeySupported(languageKey)) {
             throw new InvalidArgumentError(`Language key '${languageKey}' is not supported`);
         }
 
@@ -57,7 +52,7 @@ export class TranslationContainer {
             this.translationUnits.set(translationId, new Map<string, string>());
         }
         const map = this.getTranslationValuesById(translationId);
-        map.set(normalizedLanguageKey, value);
+        map.set(languageKey, value);
     }
 
     public getTranslationIds(): string[] {
@@ -81,9 +76,5 @@ export class TranslationContainer {
             return map;
         }
         throw new InvalidArgumentError(`Translation id '${translationId}' does not exist`);
-    }
-
-    private normalizeLanguageKey(key: string): string {
-        return LanguageKeyUtil.normalizeLanguageKey(key);
     }
 }

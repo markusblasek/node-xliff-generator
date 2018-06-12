@@ -7,7 +7,7 @@ import {
 } from '.';
 import { ValidationError } from '../errors';
 import { CreateFromCsvConfig, ICreateFromCsvConfig, LanguageOption, TranslationContainer } from '../models';
-import { LanguageKeyUtil, StopWatch } from '../utils';
+import { StopWatch } from '../utils';
 import { CreateFromCsvConfigValidator } from '../validators';
 
 export class MainService {
@@ -108,7 +108,7 @@ export class MainService {
         for (const langOption of config.languageOptions) {
             const swWriteXmlFileSync = new StopWatch();
             swWriteXmlFileSync.start();
-            const languageKey = LanguageKeyUtil.normalizeLanguageKey(langOption.languageKey);
+            const languageKey = langOption.languageKey;
             const xmlFile = this.xlifGeneratorService.generateXml(container, languageKey, config.printPretty);
             this.fileService.writeFileSync(langOption.output, xmlFile, { encoding: 'UTF-8' });
             swWriteXmlFileSync.stop();
@@ -131,7 +131,7 @@ export class MainService {
         container: TranslationContainer,
         config: CreateFromCsvConfig,
         langOption: LanguageOption): Promise<void> {
-        const languageKey = LanguageKeyUtil.normalizeLanguageKey(langOption.languageKey);
+        const languageKey = langOption.languageKey;
         const xmlFile = this.xlifGeneratorService.generateXml(container, languageKey, config.printPretty);
         return this.fileService.writeFileAsPromise(langOption.output, xmlFile, { encoding: 'UTF-8' });
     }

@@ -4,7 +4,7 @@ import { IDateTimeGeneratorService, ILogger } from '.';
 import { InvalidArgumentError } from '../errors/invalid-argument.error';
 import { TranslationContainer } from '../models';
 import { TransUnit } from '../models/xml';
-import { LanguageKeyUtil, MapUtil } from '../utils';
+import { MapUtil } from '../utils';
 
 export class XliffGeneratorService {
 
@@ -20,7 +20,6 @@ export class XliffGeneratorService {
                 'productname': container.getProductName(),
                 'source-language': container.getSourceLanguageKey()
             };
-            targetLanguageKey = LanguageKeyUtil.normalizeLanguageKey(targetLanguageKey);
             if (this.hasToUseTargetLanguageKey(container, targetLanguageKey)) {
                 if (!container.isLanguageKeySupported(targetLanguageKey)) {
                     throw new InvalidArgumentError(`Language key '${targetLanguageKey}' is no supported. `

@@ -21,8 +21,8 @@ describe('LanguageOptionsValidator', () => {
     it('should throw error when array contains the same language keys', () => {
       const sut = new LanguageOptionsValidator();
       const input: LanguageOption[] = [];
-      input.push(new LanguageOption('de', 'dummy/de', true));
-      input.push(new LanguageOption('DE', 'dummy/de', false));
+      input.push(new LanguageOption('de', 'dummy/de1', true));
+      input.push(new LanguageOption('de', 'dummy/de2', false));
       try {
         sut.validate(input);
         assert.fail('An error should be thrown');
@@ -36,7 +36,7 @@ describe('LanguageOptionsValidator', () => {
       const sut = new LanguageOptionsValidator();
       const input: LanguageOption[] = [];
       input.push(new LanguageOption('de', 'dummy/de', true));
-      input.push(new LanguageOption('en', 'dummy/de', true));
+      input.push(new LanguageOption('en', 'dummy/en', true));
       try {
         sut.validate(input);
         assert.fail('An error should be thrown');
