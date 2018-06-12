@@ -18,7 +18,12 @@ export class TranslationContainerCreatorService {
                 supportedLanguageKeys.push(option.languageKey);
             }
 
-            const result = new TranslationContainer(config.projectName, sourceLanguageKey, supportedLanguageKeys);
+            const result = new TranslationContainer(
+                config.csvFile,
+                config.projectName,
+                'plaintext',
+                sourceLanguageKey,
+                supportedLanguageKeys);
             this.fillTranslationContainerFromParsedCsvFile(result, parsedCsvFile);
             return result;
         } finally {

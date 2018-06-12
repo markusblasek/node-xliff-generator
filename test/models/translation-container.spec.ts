@@ -6,10 +6,16 @@ import { TranslationContainer } from '../../src/models/translation-container';
 
 describe('TranslationContainer', () => {
 
+  const expectedOriginal = 'input/file.csv';
+  const expectedProductName = 'productNameUt';
+  const expectedDatatype = 'plaintext';
+
   describe('constructor', () => {
     it('should add values', () => {
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
-      expect(sut.getProductName()).to.be.equal('productNameUt');
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
+      expect(sut.getOriginal()).to.be.equal(expectedOriginal);
+      expect(sut.getProductName()).to.be.equal(expectedProductName);
+      expect(sut.getDatatype()).to.be.equal(expectedDatatype);
       expect(sut.getSourceLanguageKey()).to.be.equal('en');
       expect(sut.getSupportedLanguageKeys().size).to.be.equal(2);
       expect(sut.getSupportedLanguageKeys().has('en')).to.be.equal(true);
@@ -18,7 +24,7 @@ describe('TranslationContainer', () => {
 
     it('should throw error when source language key is not in supported language key array', () => {
       try {
-        getSut('productNameUt', 'ru', ['en', 'de']);
+        getSut(expectedOriginal, expectedProductName, expectedDatatype, 'ru', ['en', 'de']);
         assert.fail('An error should be thrown');
       } catch (e) {
         expect(e).to.be.instanceof(InvalidArgumentError);
@@ -28,7 +34,7 @@ describe('TranslationContainer', () => {
 
     it('should throw error when supported language key array is empty', () => {
       try {
-        getSut('productNameUt', 'en', []);
+        getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', []);
         assert.fail('An error should be thrown');
       } catch (e) {
         expect(e).to.be.instanceof(InvalidArgumentError);
@@ -39,12 +45,12 @@ describe('TranslationContainer', () => {
 
   describe('function isLanguageKeySupported', () => {
     it('should return true when language key exists in supported language keys', () => {
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
       expect(sut.isLanguageKeySupported('en')).to.be.equal(true);
     });
 
     it('should return false when language key does not exist in supported language keys', () => {
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
       expect(sut.isLanguageKeySupported('ru')).to.be.equal(false);
     });
   });
@@ -52,7 +58,7 @@ describe('TranslationContainer', () => {
   describe('function getTranslationIds', () => {
     it('should return all translation ids', () => {
       const expectedTransId = 'transId1';
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
       sut.addTranslation(expectedTransId, 'en', 'valTransId1En');
       sut.addTranslation(expectedTransId, 'de', 'valTransId1De');
       const transIds = sut.getTranslationIds();
@@ -64,7 +70,7 @@ describe('TranslationContainer', () => {
   describe('function addTranslation', () => {
     it('should add translation values', () => {
       const expectedTransId = 'transId1';
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
       sut.addTranslation(expectedTransId, 'en', 'valTransId1En');
       sut.addTranslation(expectedTransId, 'de', 'valTransId1De');
       const transIds = sut.getTranslationIds();
@@ -76,7 +82,7 @@ describe('TranslationContainer', () => {
   describe('function getTranslationsById', () => {
     it('should return translation values', () => {
       const expectedTransId = 'transId1';
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
       sut.addTranslation(expectedTransId, 'en', 'valTransId1En');
       sut.addTranslation(expectedTransId, 'de', 'valTransId1De');
       const translations = sut.getTranslationsById(expectedTransId);
@@ -88,7 +94,7 @@ describe('TranslationContainer', () => {
 
     it('should throw error when translation id not exist', () => {
       const expectedTransId = 'transId1';
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
       sut.addTranslation(expectedTransId, 'en', 'valTransId1En');
       sut.addTranslation(expectedTransId, 'de', 'valTransId1De');
       try {
@@ -104,7 +110,7 @@ describe('TranslationContainer', () => {
   describe('function getTranslationsById', () => {
     it('should return translation values', () => {
       const expectedTransId = 'transId1';
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
       sut.addTranslation(expectedTransId, 'en', 'valTransId1En');
       sut.addTranslation(expectedTransId, 'de', 'valTransId1De');
       const translations = sut.getTranslationsById(expectedTransId);
@@ -116,7 +122,7 @@ describe('TranslationContainer', () => {
 
     it('should throw error when language key is not supported', () => {
       const expectedTransId = 'transId1';
-      const sut = getSut('productNameUt', 'en', ['en', 'de']);
+      const sut = getSut(expectedOriginal, expectedProductName, expectedDatatype, 'en', ['en', 'de']);
       try {
         sut.addTranslation(expectedTransId, 'ru', 'valTransId1Ru');
         assert.fail('An error should be thrown');
@@ -128,6 +134,11 @@ describe('TranslationContainer', () => {
   });
 });
 
-function getSut(productName: string, sourceLanguageKey: string, supportedLanguageKeys: string[]): TranslationContainer {
-  return new TranslationContainer(productName, sourceLanguageKey, supportedLanguageKeys);
+function getSut(
+  original: string,
+  productName: string,
+  datatype: string,
+  sourceLanguageKey: string,
+  supportedLanguageKeys: string[]): TranslationContainer {
+  return new TranslationContainer(original, productName, datatype, sourceLanguageKey, supportedLanguageKeys);
 }

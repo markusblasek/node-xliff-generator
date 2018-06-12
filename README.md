@@ -44,7 +44,7 @@ const xliffGenerator = require('xliff-generator');
 
 try {
     xliffGenerator.createFromCsvSync({
-        csvFile: 'csvFile.csv',
+        csvFile: 'input/csvFile.csv',
         projectName: 'myProject',
         printPretty: true,
         csvDelimiter: ',',
@@ -77,7 +77,7 @@ try {
 const xliffGenerator = require('xliff-generator');
 
 xliffGenerator.createFromCsv({
-    csvFile: 'csvFile.csv',
+    csvFile: 'input/csvFile.csv',
     projectName: 'myProject',
     printPretty: true,
     csvDelimiter: ',',
@@ -147,7 +147,7 @@ errorMessage.error2,Error message 2,Fehlermeldung 2
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xliff version="1.0">
   <file datatype="plaintext" date="2018-06-11T22:55:35.935Z" 
-  	original="messages" productname="myProject" source-language="en">
+  	original="input/csvFile.csv" productname="myProject" source-language="en">
     <header/>
     <body>
       <trans-unit id="errorMessage.error1" xml:space="preserve">

@@ -14,9 +14,9 @@ export class XliffGeneratorService {
         this.logger.trace('Enter XliffGeneratorService.generateXml');
         try {
             const fileAttributes: { [s: string]: string; } = {
-                'datatype': 'plaintext',
+                'datatype': container.getDatatype(),
                 'date': this.dateTimeGenerator.now().toISOString(),
-                'original': 'messages',
+                'original': container.getOriginal(),
                 'productname': container.getProductName(),
                 'source-language': container.getSourceLanguageKey()
             };

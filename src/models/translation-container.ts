@@ -5,8 +5,16 @@ export class TranslationContainer {
     private sourceLanguageKey: string = '';
     private translationUnits: Map<string, Map<string, string>> = new Map<string, Map<string, string>>();
     private supportedLanguageKeys: Set<string> = new Set<string>();
+    private original: string;
+    private datatype: string;
 
-    public constructor(productName: string, sourceLanguageKey: string, supportedLanguageKeys: string[]) {
+    public constructor(
+        original: string,
+        productName: string,
+        datatype: string,
+        sourceLanguageKey: string,
+        supportedLanguageKeys: string[],
+    ) {
         if (supportedLanguageKeys.length === 0) {
             throw new InvalidArgumentError('The size of supported language key is zero');
         }
@@ -19,6 +27,8 @@ export class TranslationContainer {
         }
         this.sourceLanguageKey = sourceLanguageKey;
         this.productName = productName;
+        this.original = original;
+        this.datatype = datatype;
     }
 
     public getSourceLanguageKey(): string {
@@ -27,6 +37,14 @@ export class TranslationContainer {
 
     public getProductName(): string {
         return this.productName;
+    }
+
+    public getOriginal(): string {
+        return this.original;
+    }
+
+    public getDatatype(): string {
+        return this.datatype;
     }
 
     public getSupportedLanguageKeys(): Set<string> {

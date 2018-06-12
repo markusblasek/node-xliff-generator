@@ -13,12 +13,15 @@ import {
 } from '../../src/services';
 
 describe('MainService', () => {
+
   const expectedProjectName = 'projectName';
   const outputEn = 'output/en.xml';
+  const inputCsvFile = 'input/file.csv';
   const logger = new LoggerFake();
   const dtGenerator = new DateTimeGeneratorFakeService();
   const xlifGenerator = new XliffGeneratorService(logger, dtGenerator);
   const translationContainerService = new TranslationContainerCreatorService(logger);
+
   describe('function executeSync', () => {
     it('should throw error submitted config is invalid', () => {
       const fileService = new FileFakeService();
@@ -27,7 +30,7 @@ describe('MainService', () => {
       const config: ICreateFromCsvConfig = {
         projectName: expectedProjectName,
         languageOptions: [],
-        csvFile: 'csvFile'
+        csvFile: inputCsvFile
       };
       try {
         sut.executeSync(config);
@@ -43,7 +46,7 @@ describe('MainService', () => {
         expect(path).to.be.equal(outputEn);
         expect(data).to.be.equal(
           // tslint:disable-next-line:max-line-length
-          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff version="1.0"><file datatype="plaintext" date="2016-12-25T11:34:46.987Z" original="messages" productname="projectName" source-language="en"><header/><body><trans-unit id="key1" xml:space="preserve"><source>val1En</source></trans-unit></body></file></xliff>');
+          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff version="1.0"><file datatype="plaintext" date="2016-12-25T11:34:46.987Z" original="input/file.csv" productname="projectName" source-language="en"><header/><body><trans-unit id="key1" xml:space="preserve"><source>val1En</source></trans-unit></body></file></xliff>');
       };
 
       const csvService = new CsvFakeService();
@@ -62,7 +65,7 @@ describe('MainService', () => {
             output: outputEn
           }
         ],
-        csvFile: 'csvFile'
+        csvFile: inputCsvFile
       };
       sut.executeSync(config);
     });
@@ -76,7 +79,7 @@ describe('MainService', () => {
       const config: ICreateFromCsvConfig = {
         projectName: expectedProjectName,
         languageOptions: [],
-        csvFile: 'csvFile'
+        csvFile: inputCsvFile
       };
       sut.execute(config)
         .then(() => {
@@ -95,7 +98,7 @@ describe('MainService', () => {
         expect(path).to.be.equal(outputEn);
         expect(data).to.be.equal(
           // tslint:disable-next-line:max-line-length
-          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff version="1.0"><file datatype="plaintext" date="2016-12-25T11:34:46.987Z" original="messages" productname="projectName" source-language="en"><header/><body><trans-unit id="key1" xml:space="preserve"><source>val1En</source></trans-unit></body></file></xliff>');
+          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff version="1.0"><file datatype="plaintext" date="2016-12-25T11:34:46.987Z" original="input/file.csv" productname="projectName" source-language="en"><header/><body><trans-unit id="key1" xml:space="preserve"><source>val1En</source></trans-unit></body></file></xliff>');
         return Promise.resolve();
       };
 
@@ -118,7 +121,7 @@ describe('MainService', () => {
             output: outputEn
           }
         ],
-        csvFile: 'csvFile'
+        csvFile: inputCsvFile
       };
       sut.execute(config)
         .then(() => {
@@ -156,7 +159,7 @@ describe('MainService', () => {
             output: outputEn
           }
         ],
-        csvFile: 'csvFile'
+        csvFile: inputCsvFile
       };
       sut.execute(config)
         .then(() => {
@@ -189,7 +192,7 @@ describe('MainService', () => {
             output: outputEn
           }
         ],
-        csvFile: 'csvFile'
+        csvFile: inputCsvFile
       };
       sut.execute(config)
         .then(() => {
