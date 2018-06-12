@@ -45,7 +45,7 @@ const xliffGenerator = require('xliff-generator');
 try {
     xliffGenerator.createFromCsvSync({
         csvFile: 'input/csvFile.csv',
-        projectName: 'myProject',
+        productName: 'myProject',
         printPretty: true,
         csvDelimiter: ',',
         csvComment: '',
@@ -78,7 +78,7 @@ const xliffGenerator = require('xliff-generator');
 
 xliffGenerator.createFromCsv({
     csvFile: 'input/csvFile.csv',
-    projectName: 'myProject',
+    productName: 'myProject',
     printPretty: true,
     csvDelimiter: ',',
     csvComment: '',
@@ -109,7 +109,7 @@ xliffGenerator.createFromCsv({
 |Parameter|Mandatory|Default Value|Description|
 |-|-|-|-|
 |csvFile|yes|--|The path to the csv file|
-|projectName|yes|--|The project name|
+|productName|yes|--|The product name used in the resulting xlif file|
 |printPretty|no|`false`|If `true` the resulting xml file will be printed pretty (see also [here](http://csv.adaltas.com/parse/))|
 |csvDelimiter|no|`','`|The csv delimiter. Exactly one character has to be entered (see also [here](http://csv.adaltas.com/parse/))|
 |csvComment|no|`''`|The csv comment character. Zero or one character has to be entered (see also [here](http://csv.adaltas.com/parse/))|

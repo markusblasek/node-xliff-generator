@@ -72,7 +72,7 @@ export class MainService {
         });
 
         return new CreateFromCsvConfig(
-            iConfig.projectName,
+            iConfig.productName,
             iConfig.csvFile,
             langOptions,
             iConfig.printPretty,

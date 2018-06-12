@@ -14,7 +14,7 @@ import {
 
 describe('MainService', () => {
 
-  const expectedProjectName = 'projectName';
+  const expectedProductName = 'productName';
   const outputEn = 'output/en.xml';
   const inputCsvFile = 'input/file.csv';
   const logger = new LoggerFake();
@@ -28,7 +28,7 @@ describe('MainService', () => {
       const csvService = new CsvFakeService();
       const sut = new MainService(logger, fileService, xlifGenerator, csvService, translationContainerService);
       const config: ICreateFromCsvConfig = {
-        projectName: expectedProjectName,
+        productName: expectedProductName,
         languageOptions: [],
         csvFile: inputCsvFile
       };
@@ -46,7 +46,7 @@ describe('MainService', () => {
         expect(path).to.be.equal(outputEn);
         expect(data).to.be.equal(
           // tslint:disable-next-line:max-line-length
-          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff version="1.0"><file datatype="plaintext" date="2016-12-25T11:34:46.987Z" original="input/file.csv" productname="projectName" source-language="en"><header/><body><trans-unit id="key1" xml:space="preserve"><source>val1En</source></trans-unit></body></file></xliff>');
+          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff version="1.0"><file datatype="plaintext" date="2016-12-25T11:34:46.987Z" original="input/file.csv" productname="productName" source-language="en"><header/><body><trans-unit id="key1" xml:space="preserve"><source>val1En</source></trans-unit></body></file></xliff>');
       };
 
       const csvService = new CsvFakeService();
@@ -57,7 +57,7 @@ describe('MainService', () => {
 
       const sut = new MainService(logger, fileService, xlifGenerator, csvService, translationContainerService);
       const config: ICreateFromCsvConfig = {
-        projectName: expectedProjectName,
+        productName: expectedProductName,
         languageOptions: [
           {
             isSourceLanguage: true,
@@ -77,7 +77,7 @@ describe('MainService', () => {
       const csvService = new CsvFakeService();
       const sut = new MainService(logger, fileService, xlifGenerator, csvService, translationContainerService);
       const config: ICreateFromCsvConfig = {
-        projectName: expectedProjectName,
+        productName: expectedProductName,
         languageOptions: [],
         csvFile: inputCsvFile
       };
@@ -98,7 +98,7 @@ describe('MainService', () => {
         expect(path).to.be.equal(outputEn);
         expect(data).to.be.equal(
           // tslint:disable-next-line:max-line-length
-          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff version="1.0"><file datatype="plaintext" date="2016-12-25T11:34:46.987Z" original="input/file.csv" productname="projectName" source-language="en"><header/><body><trans-unit id="key1" xml:space="preserve"><source>val1En</source></trans-unit></body></file></xliff>');
+          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff version="1.0"><file datatype="plaintext" date="2016-12-25T11:34:46.987Z" original="input/file.csv" productname="productName" source-language="en"><header/><body><trans-unit id="key1" xml:space="preserve"><source>val1En</source></trans-unit></body></file></xliff>');
         return Promise.resolve();
       };
 
@@ -113,7 +113,7 @@ describe('MainService', () => {
 
       const sut = new MainService(logger, fileService, xlifGenerator, csvService, translationContainerService);
       const config: ICreateFromCsvConfig = {
-        projectName: expectedProjectName,
+        productName: expectedProductName,
         languageOptions: [
           {
             isSourceLanguage: true,
@@ -151,7 +151,7 @@ describe('MainService', () => {
 
       const sut = new MainService(logger, fileService, xlifGenerator, csvService, translationContainerService);
       const config: ICreateFromCsvConfig = {
-        projectName: expectedProjectName,
+        productName: expectedProductName,
         languageOptions: [
           {
             isSourceLanguage: true,
@@ -184,7 +184,7 @@ describe('MainService', () => {
 
       const sut = new MainService(logger, fileService, xlifGenerator, csvService, translationContainerService);
       const config: ICreateFromCsvConfig = {
-        projectName: expectedProjectName,
+        productName: expectedProductName,
         languageOptions: [
           {
             isSourceLanguage: true,

@@ -20,7 +20,7 @@ export class TranslationContainerCreatorService {
 
             const result = new TranslationContainer(
                 config.csvFile,
-                config.projectName,
+                config.productName,
                 'plaintext',
                 sourceLanguageKey,
                 supportedLanguageKeys);

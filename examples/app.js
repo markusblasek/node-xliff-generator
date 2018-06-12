@@ -7,7 +7,7 @@ const csvFile = 'testdata/languagekeys.csv';
 try{
     xliffGenerator.createFromCsvSync({
         csvFile: csvFile,
-        projectName: 'projectName123',
+        productName: 'productName123',
         printPretty: true,
         csvComment: '#',
         csvDelimiter: ';',
@@ -32,7 +32,7 @@ try{
 
 // xliffGenerator.createFromCsv({
 //     csvFile: csvFile,
-//     projectName: 'projectName123',
+//     productName: 'productName123',
 //     printPretty: true,
 //     csvComment: '#',
 //     csvDelimiter: ';',

@@ -10,7 +10,7 @@ describe('CreateFromCsvConfigValidator', () => {
     it('should not throw any errors when valid value is submitted', () => {
       const sut = new CreateFromCsvConfigValidator();
       const validInput = createCreateFromCsvConfig(
-        'projectName', 'csvFile', getValidLanguageOptions(), null, null, null, null, null);
+        'productName', 'csvFile', getValidLanguageOptions(), null, null, null, null, null);
       sut.validate(validInput);
     });
 
@@ -31,7 +31,7 @@ describe('CreateFromCsvConfigValidator', () => {
       const sut = new CreateFromCsvConfigValidator();
       try {
         const input = createCreateFromCsvConfig(
-          'projectName', 'csvFile', [], null, null, null, null, null);
+          'productName', 'csvFile', [], null, null, null, null, null);
         sut.validate(input);
         assert.fail('An error should be thrown');
       } catch (e) {
@@ -44,7 +44,7 @@ describe('CreateFromCsvConfigValidator', () => {
       const sut = new CreateFromCsvConfigValidator();
       try {
         const input = createCreateFromCsvConfig(
-          'projectName', 'csvFile', getValidLanguageOptions(), null, 'ab', null, null, null);
+          'productName', 'csvFile', getValidLanguageOptions(), null, 'ab', null, null, null);
         sut.validate(input);
         assert.fail('An error should be thrown');
       } catch (e) {
@@ -57,7 +57,7 @@ describe('CreateFromCsvConfigValidator', () => {
       const sut = new CreateFromCsvConfigValidator();
       try {
         const input = createCreateFromCsvConfig(
-          'projectName', 'csvFile', getValidLanguageOptions(), null, null, 'ab', null, null);
+          'productName', 'csvFile', getValidLanguageOptions(), null, null, 'ab', null, null);
         sut.validate(input);
         assert.fail('An error should be thrown');
       } catch (e) {
@@ -70,7 +70,7 @@ describe('CreateFromCsvConfigValidator', () => {
       const sut = new CreateFromCsvConfigValidator();
       try {
         const input = createCreateFromCsvConfig(
-          'projectName', 'csvFile', getValidLanguageOptions(), null, null, null, 'ab', null);
+          'productName', 'csvFile', getValidLanguageOptions(), null, null, null, 'ab', null);
         sut.validate(input);
         assert.fail('An error should be thrown');
       } catch (e) {
@@ -83,7 +83,7 @@ describe('CreateFromCsvConfigValidator', () => {
       const sut = new CreateFromCsvConfigValidator();
       try {
         const input = createCreateFromCsvConfig(
-          'projectName', 'csvFile', getValidLanguageOptions(), null, null, null, null, 'ab');
+          'productName', 'csvFile', getValidLanguageOptions(), null, null, null, null, 'ab');
         sut.validate(input);
         assert.fail('An error should be thrown');
       } catch (e) {
@@ -98,7 +98,7 @@ describe('CreateFromCsvConfigValidator', () => {
       return result;
     }
     function createCreateFromCsvConfig(
-      projectName: string,
+      productName: string,
       csvFile: string,
       options: LanguageOption[],
       printPretty: boolean | null | undefined,
@@ -108,7 +108,7 @@ describe('CreateFromCsvConfigValidator', () => {
       csvQuote: string | null | undefined): CreateFromCsvConfig {
 
       return new CreateFromCsvConfig(
-        projectName,
+        productName,
         csvFile,
         options,
         printPretty,

@@ -1,8 +1,8 @@
 import { ILanguageOption } from '.';
 
 export interface ICreateFromCsvConfig {
-  /** Project name used in the the xlif file */
-  projectName: string;
+  /** Product name used in the the xlif file */
+  productName: string;
   /** Path to the csv file to read in the translation values */
   csvFile: string;
   /** Language options */

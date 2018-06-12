@@ -7,7 +7,7 @@ export class CreateFromCsvConfig {
   public static readonly CSV_COMMENT_DEFAULT_VALUE = '';
   public static readonly PRINT_PRETTY_DEFAULT_VALUE = false;
 
-  public projectName: string;
+  public productName: string;
   public csvFile: string;
   public languageOptions: LanguageOption[];
   public csvDelimiter: string = CreateFromCsvConfig.CSV_DELIMITER_DEFAULT_VALUE;
@@ -17,7 +17,7 @@ export class CreateFromCsvConfig {
   public printPretty: boolean = CreateFromCsvConfig.PRINT_PRETTY_DEFAULT_VALUE;
 
   constructor(
-    projectName: string,
+    productName: string,
     csvFile: string,
     options: LanguageOption[],
     printPretty?: boolean | null | undefined,
@@ -25,7 +25,7 @@ export class CreateFromCsvConfig {
     csvComment?: string | null | undefined,
     csvEscape?: string | null | undefined,
     csvQuote?: string | null | undefined) {
-    this.projectName = projectName;
+    this.productName = productName;
     this.csvFile = csvFile;
     this.languageOptions = options;
 

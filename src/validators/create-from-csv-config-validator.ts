@@ -1,6 +1,6 @@
 import { ValidationError } from '../errors';
 import { CreateFromCsvConfig } from '../models';
-import { LanguageOptionsValidator, ProjectNameValidator } from './';
+import { LanguageOptionsValidator, ProductNameValidator } from './';
 
 export class CreateFromCsvConfigValidator {
     /**
@@ -26,8 +26,8 @@ export class CreateFromCsvConfigValidator {
 
         const langOptionsValidator = new LanguageOptionsValidator();
         langOptionsValidator.validate(config.languageOptions);
-        const projectNameValidator = new ProjectNameValidator();
-        projectNameValidator.validate(config.projectName);
+        const productNameValidator = new ProductNameValidator();
+        productNameValidator.validate(config.productName);
     }
 
     private isNullOrUndefined(value: any): boolean  {
