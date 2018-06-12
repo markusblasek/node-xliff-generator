@@ -29,7 +29,7 @@ $ npm install --save xliff-generator
 
 # Usage
 
-## sync:
+## sync
 
 ````js
 'use strict';
@@ -63,7 +63,7 @@ try {
 }
 ````
 
-## async:
+## async
 
 ````js
 'use strict';
@@ -120,13 +120,13 @@ xliffGenerator.createFromCsv({
 
 # Structure of the csv file
 
-## Header:
+## Header
 
 The first row of the csv file contains the header information. The first column of the header contains the translation id. The following colums contains the language keys e.g. `en`, `de` etc.. The values of the language keys must match with the entered values of the `languageOptions`.
 
 The following rows contains per row exactly one translation values.
 
-## Example:
+## Example
 
 ````
 key,en,de
@@ -134,7 +134,7 @@ errorMessage.error1,Error message 1,Fehlermeldung 1
 errorMessage.error2,Error message 2,Fehlermeldung 2
 ````
 
-# Example of a xml file:
+# Example of a xml file
 
 ````xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
