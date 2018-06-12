@@ -18,7 +18,7 @@ describe('CsvService', () => {
         'key1;val1En;val2De' + os.EOL;
 
       const fileService = new FileFakeService();
-      fileService.readFileSyncFake = (path, options) => new Buffer(csvFileAsString);
+      fileService.readFileSyncFake = (path, options) => Buffer.from(csvFileAsString);
 
       const config = getConfigForTests();
 
@@ -40,7 +40,7 @@ describe('CsvService', () => {
       const csvFileAsString = 'key';
 
       const fileService = new FileFakeService();
-      fileService.readFileSyncFake = (path, options) => new Buffer(csvFileAsString);
+      fileService.readFileSyncFake = (path, options) => Buffer.from(csvFileAsString);
 
       const config = getConfigForTests();
 
@@ -55,7 +55,7 @@ describe('CsvService', () => {
       const csvFileAsString = '';
 
       const fileService = new FileFakeService();
-      fileService.readFileSyncFake = (path, options) => new Buffer(csvFileAsString);
+      fileService.readFileSyncFake = (path, options) => Buffer.from(csvFileAsString);
 
       const config = getConfigForTests();
 
@@ -75,7 +75,7 @@ describe('CsvService', () => {
         'key1;val1En;val2De;INVALIDVALUE' + os.EOL;
 
       const fileService = new FileFakeService();
-      fileService.readFileSyncFake = (path, options) => new Buffer(csvFileAsString);
+      fileService.readFileSyncFake = (path, options) => Buffer.from(csvFileAsString);
 
       const config = getConfigForTests();
 
@@ -98,7 +98,7 @@ describe('CsvService', () => {
 
       const fileService = new FileFakeService();
       fileService.readFileAsPromiseFake = (path, options) => new Promise((resolve: (data: string | Buffer) => void) => {
-        resolve(new Buffer(csvFileAsString));
+        resolve(Buffer.from(csvFileAsString));
       });
 
       const config = getConfigForTests();
@@ -129,7 +129,7 @@ describe('CsvService', () => {
 
       const fileService = new FileFakeService();
       fileService.readFileAsPromiseFake = (path, options) => new Promise((resolve: (data: string | Buffer) => void) => {
-        resolve(new Buffer(csvFileAsString));
+        resolve(Buffer.from(csvFileAsString));
       });
 
       const config = getConfigForTests();
@@ -153,7 +153,7 @@ describe('CsvService', () => {
 
       const fileService = new FileFakeService();
       fileService.readFileAsPromiseFake = (path, options) => new Promise((resolve: (data: string | Buffer) => void) => {
-        resolve(new Buffer(csvFileAsString));
+        resolve(Buffer.from(csvFileAsString));
       });
 
       const config = getConfigForTests();
@@ -178,7 +178,7 @@ describe('CsvService', () => {
 
       const fileService = new FileFakeService();
       fileService.readFileAsPromiseFake = (path, options) => new Promise((resolve: (data: string | Buffer) => void) => {
-        resolve(new Buffer(csvFileAsString));
+        resolve(Buffer.from(csvFileAsString));
       });
 
       const config = getConfigForTests();

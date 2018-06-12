@@ -15,7 +15,7 @@ export class FileFakeService implements IFileService {
     public readFileSyncFake: (
         path: string,
         options?: { encoding?: null; flag?: string; } | null) => Buffer
-        = (path, options) => new Buffer('')
+        = (path, options) => Buffer.from('')
 
     public readFileAsPromiseFake: (
         path: string,
@@ -24,7 +24,7 @@ export class FileFakeService implements IFileService {
             flag?: string | undefined;
         } | string | null | undefined) => Promise<string | Buffer>
         = (path, options) => new Promise((resolve: (data: string | Buffer) => void) => {
-            resolve(new Buffer(''));
+            resolve(Buffer.from(''));
         })
 
     public writeFileFake: (
