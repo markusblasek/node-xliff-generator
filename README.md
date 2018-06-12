@@ -1,4 +1,5 @@
 # xliff-generator
+
 [![Build Status](https://travis-ci.org/markusblasek/node-xliff-generator.svg?branch=master)](https://travis-ci.org/markusblasek/node-xliff-generator)
 [![Coverage Status](https://coveralls.io/repos/github/markusblasek/node-xliff-generator/badge.svg)](https://coveralls.io/github/markusblasek/node-xliff-generator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -10,6 +11,7 @@ creates the xliff file ([here](https://docs.typo3.org/typo3cms/CoreApiReference/
 Currently only csv is supported.
 
 # License
+
 The MIT License. See the [license file](LICENSE) for details.
 
 # Build
@@ -26,6 +28,7 @@ $ npm test
 ```
 
 # Install
+
 ```sh
 $ npm install --save xliff-generator
 ```
@@ -102,6 +105,7 @@ xliffGenerator.createFromCsv({
 ````
 
 ## Parameters
+
 |Parameter|Mandatory|Default Value|Description|
 |-|-|-|-|
 |csvFile|yes|--|The path to the csv file|
