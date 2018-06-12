@@ -12,7 +12,6 @@ import {
 /**
  * Read in the csv file, parse it and create the xliff files.
  * @param config {ICreateFromCsvConfig} the configuration instance
- * @return {void} This is the result
  */
 export function createFromCsvSync(
   config: ICreateFromCsvConfig
@@ -24,7 +23,7 @@ export function createFromCsvSync(
 /**
  * Read in the csv file, parse it and create the xliff files.
  * @param config {ICreateFromCsvConfig} the configuration instance
- * @return {void} This is the result
+ * @return {Promise<void>} Promise with the result
  */
 export function createFromCsv(
   config: ICreateFromCsvConfig
