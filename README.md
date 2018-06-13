@@ -4,6 +4,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/markusblasek/node-xliff-generator/badge.svg)](https://coveralls.io/github/markusblasek/node-xliff-generator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[![https://nodei.co/npm/xliff-generator.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/xliff-generator.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/xliff-generator)
+
 Reads from an source file the translation keys and 
 their corresponding translation values and 
 creates the xliff file ([here](https://docs.typo3.org/typo3cms/CoreApiReference/6.2/Internationalization/Introduction/Index.html)).
