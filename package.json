@@ -1,6 +1,6 @@
 {
   "name": "xliff-generator",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "description": "A simple module to create xliff files",
   "author": "Markus Blasek <github.markus.blasek@gmail.com>",
   "license": "MIT",
